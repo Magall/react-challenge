@@ -1,6 +1,6 @@
 
 import { styled } from 'styled-components'
-import { ChangeEvent, useState } from 'react'
+import { useState } from 'react'
 import { PrimaryButton } from './components/Core/Buttons'
 import { InputText } from './components/Core/Inputs'
 import { CenteredVertical, Horizontal } from './components/Core/Grids'
@@ -31,7 +31,6 @@ function App() {
   const lastNameElements = useAppSelector(state => state.names.lastNameCalculated);
   const [firstName, setFirstName] = useState<string>('');
   const [lastName, setLastName] = useState<string>('');
-  const [firstNameGreen, setFirstNameGreen] = useState<Array<any>>([])
 
   const handleNames = () => {
     dispatch(calculateElementsAcronym({ firstName, lastName }))
@@ -42,16 +41,15 @@ function App() {
     let greenClassHandler = '';
     const charToUnderlineFirstName = firstNameElements;
     const charToUnderlineLastName = lastNameElements;
-
     const charsFirstName = firstName.split('').map((el, i) => {
       greenClassHandler = charToUnderlineFirstName.includes(i) ? 'green' : ''
       return <span key={i} className={greenClassHandler}>{el}</span>
     })
-
     const charsLastName = lastName.split('').map((el, i) => {
       greenClassHandler = charToUnderlineLastName.includes(i) ? 'green' : ''
       return <span key={i} className={greenClassHandler}>{el}</span>
     })
+
     return (
       <CenteredVertical>
         <CharsContainer>
@@ -59,7 +57,7 @@ function App() {
         </CharsContainer>
         <CharsContainer>
           {charsLastName}
-        </CharsContainer>    
+        </CharsContainer>
       </CenteredVertical>
     )
   }
@@ -74,8 +72,8 @@ function App() {
           </Horizontal>
         </FullName>
         <Horizontal>
-          <InputText label='First Name' name='firstName' onChangeText={(e: ChangeEvent) => setFirstName(e.target.value)} />
-          <InputText label='Last Name' name='lastName' onChangeText={(e: ChangeEvent) => setLastName(e.target.value)} />
+          <InputText label='First Name' name='firstName' onChangeText={(e: React.ChangeEvent<HTMLInputElement>) => setFirstName(e.target.value)} />
+          <InputText label='Last Name' name='lastName' onChangeText={(e: React.ChangeEvent<HTMLInputElement>) => setLastName(e.target.value)} />
         </Horizontal>
         <PrimaryButton onClick={() => handleNames()}>Breakfy</PrimaryButton>
       </Banner>
