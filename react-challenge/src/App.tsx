@@ -4,7 +4,9 @@ import { ChangeEvent, useState } from 'react'
 import { PrimaryButton } from './components/Core/Buttons'
 import { InputText } from './components/Core/Inputs'
 import { CenteredVertical, Horizontal } from './components/Core/Grids'
-import { COLORS, ELEMENTS } from './constants'
+import { COLORS } from './constants'
+import { useAppDispatch, useAppSelector } from './store/hooks'
+import { calculateElementsAcronym } from './store/names.slice'
 import './App.css'
 
 const FullName = styled(CenteredVertical)`
@@ -17,41 +19,50 @@ const Banner = styled(CenteredVertical)`
     background: ${COLORS.dark};
     color: ${COLORS.light};
     padding:24px;
+`;
 
+const CharsContainer = styled(Horizontal)`
+  padding-top:8px;
+  padding-bottom:8px;
 `;
 function App() {
+  const dispatch = useAppDispatch();
+  const firstNameElements = useAppSelector(state => state.names.firstNameCalculated);
+  const lastNameElements = useAppSelector(state => state.names.lastNameCalculated);
   const [firstName, setFirstName] = useState<string>('');
   const [lastName, setLastName] = useState<string>('');
   const [firstNameGreen, setFirstNameGreen] = useState<Array<any>>([])
 
-  const findElements = (): Array<number> => {
-    const resp = []
-    let currentSearchTerm = '';
-    let index = 0;
-    while (index < firstName.length) {
-      currentSearchTerm = firstName.charAt(index) + firstName.charAt(index + 1);
-      if (ELEMENTS.includes(currentSearchTerm.toLocaleLowerCase())) {
-        resp.push(...[index, index + 1])
-        index += 2;
-      }
-      else {
-        index += 2;
-      }
-    }
-    return resp;
+  const handleNames = () => {
+    dispatch(calculateElementsAcronym({ firstName, lastName }))
+
   }
 
-  const checkNames = () => {
-    let greenClassHandler = ''
-    const charToUnderline = findElements();
-    const chars = firstName.split('').map((el, i) => {
-      greenClassHandler = charToUnderline.includes(i) ? 'green' : ''
+  const renderNames = () => {
+    let greenClassHandler = '';
+    const charToUnderlineFirstName = firstNameElements;
+    const charToUnderlineLastName = lastNameElements;
+
+    const charsFirstName = firstName.split('').map((el, i) => {
+      greenClassHandler = charToUnderlineFirstName.includes(i) ? 'green' : ''
       return <span key={i} className={greenClassHandler}>{el}</span>
     })
-    setFirstNameGreen(chars)
+
+    const charsLastName = lastName.split('').map((el, i) => {
+      greenClassHandler = charToUnderlineLastName.includes(i) ? 'green' : ''
+      return <span key={i} className={greenClassHandler}>{el}</span>
+    })
+    return (
+      <CenteredVertical>
+        <CharsContainer>
+          {charsFirstName}
+        </CharsContainer>
+        <CharsContainer>
+          {charsLastName}
+        </CharsContainer>    
+      </CenteredVertical>
+    )
   }
-
-
 
 
   return (
@@ -59,14 +70,14 @@ function App() {
       <Banner>
         <FullName>
           <Horizontal>
-            {firstNameGreen}
+            {renderNames()}
           </Horizontal>
         </FullName>
         <Horizontal>
-          <InputText label='First Name' name='firstName' onChangeText={(e:ChangeEvent) => setFirstName(e.target.value)} />
-          <InputText label='Last Name' name='lastName' onChangeText={(e:ChangeEvent) => setLastName(e.target.value)} />
+          <InputText label='First Name' name='firstName' onChangeText={(e: ChangeEvent) => setFirstName(e.target.value)} />
+          <InputText label='Last Name' name='lastName' onChangeText={(e: ChangeEvent) => setLastName(e.target.value)} />
         </Horizontal>
-        <PrimaryButton onClick={() => checkNames()}>Breakfy</PrimaryButton>
+        <PrimaryButton onClick={() => handleNames()}>Breakfy</PrimaryButton>
       </Banner>
     </div>
   )
