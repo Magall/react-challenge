@@ -1,4 +1,3 @@
-import { ChangeEventHandler } from "react";
 import { styled } from "styled-components";
 interface iInputText {
     label: string;
