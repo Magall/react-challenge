@@ -1,12 +1,12 @@
 
 import { styled } from 'styled-components'
 import { useState } from 'react'
-import { PrimaryButton } from '../Core/Buttons'
-import { InputText } from '../Core/Inputs'
-import { CenteredVertical, Horizontal } from '../Core/Grids'
-import { COLORS } from '../../constants'
-import { useAppDispatch, useAppSelector } from '../../store/hooks'
-import { calculateElementsAcronym } from '../../store/names.slice'
+import { PrimaryButton } from '../components/core/Buttons'
+import { InputText } from '../components/core/Inputs'
+import { CenteredVertical, Horizontal } from '../components/core/Grids'
+import { COLORS } from '../constants'
+import { useAppDispatch, useAppSelector } from '../store/hooks'
+import { calculateElementsAcronym } from '../store/names.slice'
 
 const FullName = styled(CenteredVertical)`
     font-size: 48px;
