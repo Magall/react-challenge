@@ -1,27 +1,28 @@
-# React + TypeScript + Vite
+# Rafael React Challenge
+## How to run
+This is a dockerized app, all you need is run the compose
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
+```sh
+docker compose up
 ```
+## Project Structure
+ click on the link bellow to see the image
+[![project structure image](https://drive.google.com/file/d/1EU_oL5ioOIFCXlq63pI4GOz6Xlqy47K0/view?usp=sharing)](https://drive.google.com/file/d/1EU_oL5ioOIFCXlq63pI4GOz6Xlqy47K0/view?usp=sharing)
+### store
+I created a store folder to handle the redux config and expose some hooks. For every domain I would create a new slice. Here I hold the underlining logic and data about wich letters should be underlinde
+### components
+Here there is the core folder. This should hold abstract components shared among the app like buttons, inputs etc.. If I had a bigger app I would create more folders, like ui and layout, to hold ui and layouts components.
+### screens
+Here sits all screens of the app
+### constansts
+Holds all constants of the app, the element's acronyms, colors etc ..
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## Dependencies
+### Styled Components
+I chose to use it, to show I know how to use it and I belive that having smaller styled components which you can combine works very good on code reuse and specially with clever naming increases readability, since you do not need to read a big chunk of scss to understand what that component does.
+
+### Redux
+Since the challenge asks to use redux, I decided to hold the logic of finding the elements there and the data about which one we should make green.
+
+## Contact
+If you have any question about the solution, please get in touch rafaelgmagalhaes@proton.me
