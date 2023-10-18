@@ -3,7 +3,7 @@ import { styled } from "styled-components";
 interface iInputText {
     label: string;
     name: string;
-    onChangeText: ChangeEventHandler<HTMLInputElement>;
+    onChangeText:Function;
 }
 
 const InputWrapper = styled.div`
@@ -23,7 +23,7 @@ export function InputText(props: iInputText) {
     return (
         <InputWrapper>
             <label htmlFor={props.name} >{props.label}</label>
-            <Input type="text" name={props.name} onChange={props.onChangeText} />
+            <Input type="text" name={props.name} onChange={props.onChangeText}/>
         </InputWrapper>
     );
 }

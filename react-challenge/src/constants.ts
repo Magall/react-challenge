@@ -1,4 +1,4 @@
 const COLORS = { primary: '#034830', light: '#e1e1e1', dark: '#212121' }
-const ELEMENTS = ['Ac','Ag','Al','Ar','As','At','Au','Ba','Be','Bh','Bi','Bk','Br','Ca','Cd','Ce','Cf','Cl','Cm','Cn','Co','Cr','Cs','Cu','Db','Ds','Dy','Er','Es','Eu','Fe','Fl','Fm','Fr','Ga','Gd','He','Hf','Hg','Ho','Hs','In','Ir','Kr','La','Li','Lr','Lu','Lv','Mc','Md','Mg','Mn','Mo','Mt','Na','Nb','Nd','Ne','Nh','Ni','No','Np','Og','Os','P','Pa','Pb','Pd','Pm','Po','Pr','Pt','Pu','Ra','Rb','Re','Rf','Rg','Rh','Rn','Ru','Sb','Sc','Se','Sg','Si','Sm','Sn','Sr','Ta','Tb','Tc','Te','Th','Ti','Tl','Tm','Ts','Xe','Yb','Zn','Zr']
-// const ELEMENTS_SINGLE_LETTERS = ['B','C','F','H','I','K']
+const ELEMENTS = ['ac','ag','al','ar','as','at','au','ba','be','bh','bi','bk','br','ca','cd','ce','cf','cl','cm','cn','co','cr','cs','cu','db','ds','dy','er','es','eu','fe','fl','fm','fr','ga','gd','he','hf','hg','ho','hs','in','ir','kr','la','li','lr','lu','lv','mc','md','mg','mn','mo','mt','na','nb','nd','ne','nh','ni','no','np','og','os','pa','pb','pd','pm','po','pr','pt','pu','ra','rb','re','rf','rg','rh','rn','ru','sb','sc','se','sg','si','sm','sn','sr','ta','tb','tc','te','th','ti','tl','tm','ts','xe','yb','zn','zr']
+// const elements_single_letters = ['b','c','f','h','i','k']
 export {COLORS,ELEMENTS};
